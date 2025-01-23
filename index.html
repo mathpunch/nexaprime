@@ -85,20 +85,29 @@
     <div class="container">
         <h1>Welcome To Nexa Prime</h1>
         <div class="game-list">
-            <a href="https://play2048.co" class="game-button">2048</a>
+            <a href="games/2048.zip" class="game-button">2048</a>
         </div>
         <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.toggle-button').textContent = "Toggle Peach Theme";
+            }
+        });
+
         function toggleDarkMode() {
             var element = document.body;
             element.classList.toggle("dark-mode");
             var button = document.querySelector('.toggle-button');
             if (element.classList.contains("dark-mode")) {
                 button.textContent = "Toggle Peach Theme";
+                localStorage.setItem('theme', 'dark');
             } else {
                 button.textContent = "Toggle Dark Mode";
+                localStorage.setItem('theme', 'light');
             }
         }
     </script>
