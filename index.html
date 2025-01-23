@@ -6,8 +6,8 @@
     <title>Unblocked Game</title>
     <style>
         body {
-            background-color: #121212; /* Dark mode background color */
-            color: #FFDAB9; /* Peach color for text */
+            background-color: #FFDAB9; /* Peach color */
+            color: #333;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -19,7 +19,7 @@
 
         .container {
             text-align: center;
-            background-color: #1e1e1e; /* Darker background for container */
+            background-color: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -44,12 +44,49 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        .game-list {
+            margin-top: 20px;
+        }
+
+        .game-button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #FFDAB9; /* Peach color for button */
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #FFDAB9;
+        }
+
+        .dark-mode .container {
+            background-color: #1e1e1e;
+        }
+
+        .dark-mode .toggle-button {
+            background-color: #333;
+            color: #FFDAB9;
+        }
+
+        .dark-mode .game-button {
+            background-color: #333;
+            color: #FFDAB9;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Welcome To Nexa Prime</h1>
-        <iframe class="game-iframe" src="https://example.com/game"></iframe>
+        <div class="game-list">
+            <a href="https://play2048.co" class="game-button">2048</a>
+        </div>
         <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
     </div>
 
@@ -57,6 +94,12 @@
         function toggleDarkMode() {
             var element = document.body;
             element.classList.toggle("dark-mode");
+            var button = document.querySelector('.toggle-button');
+            if (element.classList.contains("dark-mode")) {
+                button.textContent = "Toggle Peach Theme";
+            } else {
+                button.textContent = "Toggle Dark Mode";
+            }
         }
     </script>
 </body>
