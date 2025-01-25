@@ -1,115 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unblocked Game</title>
-    <style>
-        body {
-            background-color: #FFDAB9; /* Peach color */
-            color: #333;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+html, body {
+    overflow: hidden;
+    background-color: #100f0f;
+}
 
-        .container {
-            text-align: center;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+.alignment-container {
+    height: 100%;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
 
-        h1 {
-            color: #FFDAB9; /* Peach color for text */
-        }
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
 
-        .game-iframe {
-            width: 80%;
-            height: 500px;
-            border: none;
-        }
+.logo-image {
+    height: auto;
+    z-index: 1;
+    width: 150px;
+    pointer-events: none;
+    user-select: none
+}
 
-        .toggle-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #FFDAB9; /* Peach color for button */
-            color: #333;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+#spinning {
+    animation: spin 24s infinite linear
+}
 
-        .game-list {
-            margin-top: 20px;
-        }
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
 
-        .game-button {
-            display: block;
-            margin: 10px 0;
-            padding: 10px 20px;
-            background-color: #FFDAB9; /* Peach color for button */
-            color: #333;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
+    to {
+        transform: rotate(360deg)
+    }
+}
 
-        .dark-mode {
-            background-color: #121212;
-            color: #FFDAB9;
-        }
+#creation-info {
+    color: #797979;
+    font-weight: 500;
+    font-size: 16px
+}
 
-        .dark-mode .container {
-            background-color: #1e1e1e;
-        }
+.shortcuts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column
+}
 
-        .dark-mode .toggle-button {
-            background-color: #333;
-            color: #FFDAB9;
-        }
+.shortcut-frame {
+    flex-direction: row;
+    display: flex;
+    margin-left: 30px;
+    margin-bottom: 15px
+}
 
-        .dark-mode .game-button {
-            background-color: #333;
-            color: #FFDAB9;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Welcome To Nexa Prime</h1>
-        <div class="game-list">
-            <a href="games/2048" class="game-button">2048</a>
-        </div>
-        <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-    </div>
+.game-container {
+    width: 145px;
+    margin: 10px;
+    height: 250px;
+    overflow: hidden;
+    transition: width .3s;
+    margin-right: -10px;
+    height: 100px
+}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            if (localStorage.getItem('theme') === 'dark') {
-                document.body.classList.add('dark-mode');
-                document.querySelector('.toggle-button').textContent = "Toggle Peach Theme";
-            }
-        });
+.game {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    width: 94px;
+    border-radius: 10px;
+    height: auto;
+    background: #14131387;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: blur(8px);
+    -moz-backdrop-filter: blur(8px);
+    -ms-backdrop-filter: blur(8px)
+}
 
-        function toggleDarkMode() {
-            var element = document.body;
-            element.classList.toggle("dark-mode");
-            var button = document.querySelector('.toggle-button');
-            if (element.classList.contains("dark-mode")) {
-                button.textContent = "Toggle Peach Theme";
-                localStorage.setItem('theme', 'dark');
-            } else {
-                button.textContent = "Toggle Dark Mode";
-                localStorage.setItem('theme', 'light');
-            }
-        }
-    </script>
-</body>
-</html>
+.game:hover img {
+    transform: scale(1.1)
+}
+
+.game img {
+    width: 100%;
+    border-radius: 10px;
+    height: 55%;
+    transition: transform .3s
+}
